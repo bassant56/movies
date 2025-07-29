@@ -1,0 +1,102 @@
+import 'package:flutter/material.dart';
+import 'package:movieex/service/service_model.dart';
+import 'package:movieex/models/movie_models.dart';
+
+class MoviesScreen extends StatefulWidget {
+  const MoviesScreen({super.key});
+
+  @override
+  State<MoviesScreen> createState() => _MoviesScreenState();
+}
+
+class _MoviesScreenState extends State<MoviesScreen> {
+  List<Result> movies = [];
+  bool loading = true;
+
+  getMyMovie() async {
+    movies = (await MovieService().getMovie()).cast<Result>(); //?
+    loading = false;
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getMyMovie();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.black,
+      appBar: AppBar(
+        title: const Text("Watch Now"),
+        backgroundColor: Colors.black,
+      ),
+      body:
+          loading
+              ? const Center(child: CircularProgressIndicator())
+              : GridView.builder(
+                padding: const EdgeInsets.all(10),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 10,
+                  crossAxisSpacing: 10,
+                  childAspectRatio: 0.6,
+                ),
+                itemCount: movies.length,
+                itemBuilder: (context, index) {
+                  final movie = movies[index];
+                  final imageUrl =
+                      'https://image.tmdb.org/t/p/w500${movie.posterPath}';
+
+                  return Container(
+                    decoration: BoxDecoration(
+                      color: Colors.grey[900],
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        ClipRRect(
+                          borderRadius: const BorderRadius.vertical(
+                            top: Radius.circular(12),
+                          ),
+                          child: Image.network(
+                            imageUrl,
+                            height: 200,
+                            width: double.infinity,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            movie.title,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          child: Row(
+                            children: List.generate(
+                              movie.voteAverage.floor().clamp(0, 5),
+                              (i) => const Icon(
+                                Icons.star,
+                                size: 16,
+                                color: Colors.yellow,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
+    );
+  }
+}
