@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 
-DetmovieModels DetmovieModelsFromJson(Map<String, dynamic> json) =>
+DetmovieModels detmovieModelsFromJson(Map<String, dynamic> json) =>
     DetmovieModels.fromJson(json);
 
-String DetmovieModelsToJson(DetmovieModels data) => json.encode(data.toJson());
+String detmovieModelsToJson(DetmovieModels data) => json.encode(data.toJson());
 
 class DetmovieModels {
   bool adult;

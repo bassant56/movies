@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:movieex/models/movie_models.dart';
 
 class MovieService {
-  Dio _client = Dio();
+  final Dio _client = Dio();
   String endPoint =
       "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1";
 

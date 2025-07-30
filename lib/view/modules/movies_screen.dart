@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movieex/service/service_model.dart';
 import 'package:movieex/models/movie_models.dart';
+import 'package:movieex/shared/components/default_stars.dart';
 import 'package:movieex/view/modules/movie_details.dart';
 
 class MoviesScreen extends StatefulWidget {
@@ -88,21 +89,7 @@ class _MoviesScreenState extends State<MoviesScreen> {
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 8.0,
-                            ),
-                            child: Row(
-                              children: List.generate(
-                                movie.voteAverage.floor().clamp(0, 5),
-                                (i) => const Icon(
-                                  Icons.star,
-                                  size: 16,
-                                  color: Colors.yellow,
-                                ),
-                              ),
-                            ),
-                          ),
+                          DefaultStars(movie: movie),
                         ],
                       ),
                     ),
