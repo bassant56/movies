@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:movieex/models/detmovie_models.dart';
+import 'package:movieex/models/details_movie.dart';
 import 'package:movieex/models/movie_models.dart';
 import 'package:movieex/service/detmovie_service.dart';
+import 'package:movieex/shared/components/default_stars.dart';
 
 class MovieDetails extends StatefulWidget {
   final Result movie;
@@ -61,21 +62,7 @@ class _MovieDetailsState extends State<MovieDetails> {
                       ),
                     ),
                     const SizedBox(height: 8),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                      child: Row(
-                        children: List.generate(
-                          5,
-                          (index) => Icon(
-                            index < (detmovieModels.voteAverage / 2).round()
-                                ? Icons.star
-                                : Icons.star_border,
-                            color: Colors.amber,
-                            size: 20,
-                          ),
-                        ),
-                      ),
-                    ),
+                   DefaultStars(voteAverage: detmovieModels.voteAverage),
                     const SizedBox(height: 10),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16.0),

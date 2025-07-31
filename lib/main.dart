@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:device_preview/device_preview.dart';
-import 'package:movieex/view/modules/movies_screen.dart';
+import 'package:movieex/view/all_movie_screen/ui_screen/movies_screen.dart';
 
 void main() {
   runApp(

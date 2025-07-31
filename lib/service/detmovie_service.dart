@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
-import 'package:movieex/models/detmovie_models.dart';
+import 'package:movieex/models/details_movie.dart';
 
 class DetmovieService {
   final int id;
-  Dio _client = Dio();
+  final Dio _client = Dio();
   late String endpoint;
   DetmovieService({required this.id}) {
     endpoint = 'https://api.themoviedb.org/3/movie/$id';
@@ -21,7 +21,7 @@ class DetmovieService {
       var data = response.data;
       print(data);
 
-      detmovieModels = DetmovieModelsFromJson(response.data);
+      detmovieModels = detmovieModelsFromJson(response.data);
     } catch (e) {
       print(e);
     }
