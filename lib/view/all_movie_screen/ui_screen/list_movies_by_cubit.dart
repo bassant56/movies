@@ -73,7 +73,7 @@ class MoviesCubitScreen extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
-                              movie.title ?? '',
+                              movie.title,
                               style: const TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
