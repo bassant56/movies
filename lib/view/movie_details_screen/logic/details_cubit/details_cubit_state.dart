@@ -1,18 +1,18 @@
 part of 'details_cubit_cubit.dart';
 
 @immutable
-sealed class DetailsCubitState {}
+abstract class DetailsCubitState {}
 
-final class DetailsCubitInitial extends DetailsCubitState {}
+class DetailsCubitInitial extends DetailsCubitState {}
 
-final class DetailsCubitLoading extends DetailsCubitState {}
+class DetailsCubitLoading extends DetailsCubitState {}
 
-final class DetailsCubitLoaded extends DetailsCubitState {
+class DetailsCubitLoaded extends DetailsCubitState {
   final DetmovieModels detalisMovie;
   DetailsCubitLoaded(this.detalisMovie);
 }
 
-final class DetailsCubitError extends DetailsCubitState {
-  String errorMesssage;
+class DetailsCubitError extends DetailsCubitState {
+  final String errorMesssage;
   DetailsCubitError(this.errorMesssage);
 }

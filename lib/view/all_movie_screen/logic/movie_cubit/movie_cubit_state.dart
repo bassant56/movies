@@ -8,11 +8,11 @@ final class MovieCubitInitial extends MovieCubitState {}
 final class MovieCubitLoading extends MovieCubitState {}
 
 final class MovieCubitLoaded extends MovieCubitState {
-  List<Movies> movie;
+  final List<Result> movie;
   MovieCubitLoaded(this.movie);
 }
 
 final class MovieCubitError extends MovieCubitState {
-  String errorMesssage;
+  final String errorMesssage;
   MovieCubitError(this.errorMesssage);
 }

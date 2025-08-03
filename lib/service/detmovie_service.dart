@@ -21,7 +21,7 @@ class DetmovieService {
       var data = response.data;
       print(data);
 
-      detmovieModels = detmovieModelsFromJson(response.data);
+      detmovieModels = DetmovieModels.fromJson(response.data);
     } catch (e) {
       print(e);
     }

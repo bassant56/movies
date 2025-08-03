@@ -10,12 +10,11 @@ class MovieCubitCubit extends Cubit<MovieCubitState> {
     getMoviee();
   }
 
-  getMoviee() async {
+  void getMoviee() async {
+    emit(MovieCubitLoading());
     try {
-      emit(MovieCubitLoading());
-      List<Movies> movie = [];
-      movie = (await MovieService().getMovie()) as List<Movies>;
-      emit(MovieCubitLoaded(movie));
+      final response = await MovieService().getMovie();
+      emit(MovieCubitLoaded(response.results.cast<Result>()));
     } catch (e) {
       emit(MovieCubitError(e.toString()));
     }

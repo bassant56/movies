@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:device_preview/device_preview.dart';
-import 'package:movieex/view/all_movie_screen/ui_screen/movies_screen.dart';
+import 'package:movieex/view/all_movie_screen/ui_screen/list_movies_by_cubit.dart';
 
 void main() {
   runApp(
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       builder: DevicePreview.appBuilder,
-      home: MoviesScreen(),
+      home: MoviesCubitScreen(),
     );
   }
 }
